@@ -27,6 +27,7 @@
               <small class="text-muted">Qty: {{ item.product.quantity }}</small>
             </div>
             <span>৳{{ item.product.price }}</span>
+            <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-sm">🗑️</a>
           </li>
           {% empty %}
             <li class="list-group-item">Your cart is empty.</li>

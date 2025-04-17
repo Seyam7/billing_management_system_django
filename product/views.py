@@ -84,3 +84,8 @@ def show_cart(request):
         except:
             total += 0  # fallback if quantity or price is empty or not a number
     return render(request, 'billpay.html', {'cart_items': cart_items, 'total': total})
+
+def remove_from_cart(request, order_id):
+    item = get_object_or_404(Order, id=order_id)
+    item.delete()
+    return redirect('show_cart')

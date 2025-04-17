@@ -35,6 +35,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{% url 'detailsproduct' %}">All Products</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'show_cart' %}">Cart</a>
+          </li>
           {% if user.is_staff or user.is_superuser %}
           <li class="nav-item">
             <a class="nav-link" href="{% url 'newproduct' %}">New Product</a>
