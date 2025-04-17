@@ -31,7 +31,7 @@
         {% for item in data %}
         <div class="col">
           <div class="card shadow-sm">
-            <img style="width:70%;height:200px;" src="{{item.image.url}}" alt="">
+            <img style="width:70%;height:200px;" src="{{item.image.url}}" alt="{{ item.name }}">
 
             <div class="card-body">
               <h4>{{ item.name }}</h4>

@@ -34,7 +34,7 @@
                   <p><a href="{% url 'updateproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Edit</a></p>
                   <p><a href="{% url 'deleteproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Remove</a></p>
                   {% else %}
-                  <p><a href="{% url 'billpay' %}" class="btn btn-sm btn-outline-secondary">Add to cart</a></p>
+                  <p><a href="{% url 'billpay' item.id %}" class="btn btn-sm btn-outline-secondary">Add to cart</a></p>
                   {% endif %}
                 </div>
               </div>
