@@ -1,0 +1,72 @@
+{% extends 'base.html'%}
+
+{% block title %}
+   Product's Detail
+{% endblock %}
+
+{% block content %}
+  <main>
+  <section class="py-5 text-center container">
+    <div class="row py-lg-1">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="fw-light">All Products</h1>
+        <p>Buy from here.</p>
+      </div>
+    </div>
+  </section>
+
+  <nav class="navbar navbar-light bg-dark">
+    <div class="container-fluid">
+      <form class="d-flex" action="/search">
+        <input name="q" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </nav>
+
+  <div class="album py-5 bg-dark">
+    <div class="container">
+
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-3">
+        {% for item in data %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <img style="width:70%;height:200px;" src="{{item.image.url}}" alt="">
+
+            <div class="card-body">
+              <h4>{{ item.name }}</h4>
+              <div class="d-flex justify-content-between align-items-center">
+                <p class="card-text">{{ item.quantity }}</p>
+                <div class="text">৳{{ item.price }}</div>
+              </div>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  {% if prem.product.delete_producttable %}
+                  <p><a href="{% url 'updateproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Edit</a></p>
+                  <p><a href="{% url 'deleteproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Remove</a></p>
+                  {% else %}
+                  <p><a href="{% url 'billpay' item.id %}" class="btn btn-sm btn-outline-secondary">Add to cart</a></p>
+                  <p><a href="{% url 'updateproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Edit</a></p>
+                  <p><a href="{% url 'deleteproduct' item.id %}" class="btn btn-sm btn-outline-secondary">Remove</a></p>
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<footer class="text-muted py-5">
+  <div class="container">
+    <p class="float-end mb-1">
+      <a href="#">Back to top</a>
+    </p>
+    <p class="mb-0">New to BMS? <a href="/">Visit the homepage</a> </p>
+  </div>
+</footer>
+{% endblock %}

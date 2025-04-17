@@ -1,0 +1,38 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Update Product
+{% endblock %}
+
+{% block content %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+  <main>
+    <div class="py-5 text-center">
+      <h2>Update Product</h2>
+    </div>
+
+      <div class="col-md-3 col-lg-8">
+              <form style="padding-left:350px;" action="" class="row g-3" method="post">
+                {% csrf_token %}
+                <div  class="form-group">
+                  <label for="formGroupExampleInput2">Quantity</label>
+                  <input value="{{item.quantity}}" type="text" name="quantity" class="form-control" id="formGroupExampleInput2" placeholder="Product Quantity">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput3">Price</label>
+                  <input value="{{item.price}}" type="text" name="price" class="form-control" id="formGroupExampleInput3" placeholder="Product Price">
+                </div>
+                  <hr class="my-4">
+                <button class="w-100 btn btn-primary btn-lg" name="submit" type="submit">Submit</button>
+              </form>
+      </div>
+
+  </main>
+
+{% endblock %}

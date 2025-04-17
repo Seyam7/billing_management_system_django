@@ -1,0 +1,18 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Contact
+{% endblock %}
+
+{% block content %}
+  <div class="container col-md-15 offset-3 mt-5">
+    <form class="form-group mr-auto ml-auto col-md-6" action="" method="post">
+      {% csrf_token %}
+      <h3 class="text-center">Contact Us</h3><hr>
+      <input type="" name="username" class="form-control" id="username" value="{{request.user.username}}"><br>
+      <input type="email" name="email" class="form-control" id="email" value="{{request.user.email}}" placeholder="Enter your email" autocomplete="False"><br>
+      <textarea name="comments" id="comments" class="form-control" rows="8" cols="70" placeholder="Report Your Issue"></textarea><br>
+      <input type="submit" class="btn btn-info form-control" name="" value="Submit">
+    </form>
+  </div>
+{% endblock %}

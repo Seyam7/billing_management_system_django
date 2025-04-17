@@ -1,0 +1,61 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  Registration
+{% endblock %}
+
+{% block content %}
+  <h2>Add A New Buyer</h2>
+
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+<form class="row g-3" method="post" action="">
+  {% csrf_token %}
+  <div class="col-md-6">
+    <label for="inputFname" class="form-label">First Name</label>
+    <input type="text" class="form-control" id="inputFname" name="fname" placeholder="Jack">
+  </div>
+  <div class="col-md-6">
+    <label for="inputLname" class="form-label">Last Name</label>
+    <input type="text" class="form-control" id="inputLname" name="lname" placeholder="Zill">
+  </div>
+  <div class="col-md-6">
+    <label for="inputUsername" class="form-label">Username</label>
+    <input type="text" class="form-control" id="inputUsername" name="username" placeholder="username123">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPassword" class="form-label">Password</label>
+    <input type="password" class="form-control" id="inputPassword" name="password" placeholder="password123">
+  </div>
+  <div class="col-12">
+    <label for="inputEmail4" class="form-label">Email</label>
+    <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="example@email.com">
+  </div>
+  <div class="col-md-6">
+    <label for="inputPhone" class="form-label">Phone No.</label>
+    <input type="text" class="form-control" id="inputPhone" name="contact" placeholder="+880XXXXXXXXXX">
+  </div>
+  <div class="col-md-6">
+    <label for="inputGender" class="form-label">Gender</label>
+    <select id="inputGender" class="form-select" name="gender">
+      <option selected>Choose...</option>
+      <option>Male</option>
+      <option>Female</option>
+      <option>Others</option>
+    </select>
+  </div>
+  <div class="col-12">
+    <label for="inputAddress" class="form-label">Address</label>
+    <input type="text" class="form-control" id="inputAddress" name="address" placeholder="B4, H-12, Aftabnagar, Dhaka.">
+  </div>
+  <div class="col-12">
+    <button type="submit" class="btn btn-primary" name="reg">Register</button>
+  </div>
+</form>
+
+{% endblock %}

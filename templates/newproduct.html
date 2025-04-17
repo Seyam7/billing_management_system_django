@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+
+{% block title %}
+  New Product
+{% endblock %}
+
+{% block content %}
+  {% for message in messages %}
+  <div class="alert alert-{{message.tags}} alert-dismissible fade show" role="alert">
+  <strong>Message</strong> {{message}}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+  </div>
+  {% endfor %}
+
+  <main>
+    <div class="py-3 text-center">
+      <h2>Add New Product</h2>
+      <p class="lead">Fill every blocks.</p>
+    </div>
+
+      <div class="container col-md-7">
+              <form action="" class="row g-3" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleFormControlFile1">Image</label>
+                    <div class="col-md-4">
+                      <input type="file" name="image" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput">Name</label>
+                  <input type="text" name="name" class="form-control" id="formGroupExampleInput" placeholder="Product Name">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput2">Quantity</label>
+                  <input type="text" name="quantity" class="form-control" id="formGroupExampleInput2" placeholder="Product Quantity">
+                </div>
+                <div class="form-group">
+                  <label for="formGroupExampleInput3">Price</label>
+                  <input type="text" name="price" class="form-control" id="formGroupExampleInput3" placeholder="Product Price">
+                </div>
+                  <hr class="my-4">
+                <button class="w-100 btn btn-primary btn-lg" type="submit">Add</button>
+              </form>
+      </div>
+  </main>
+
+  <footer class="my-5 pt-5 text-muted text-center text-small">
+    <p class="mb-1">&copy; 2021 BMS</p>
+    <ul class="list-inline">
+      <li class="list-inline-item"><a href="#">Privacy</a></li>
+      <li class="list-inline-item"><a href="#">Terms</a></li>
+      <li class="list-inline-item"><a href="#">Support</a></li>
+    </ul>
+  </footer>
+
+{% endblock %}
