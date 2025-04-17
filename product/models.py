@@ -9,3 +9,11 @@ class ProductTable(models.Model):
 
     def __str__(self):
         return self.name + self.quantity
+
+
+class Order(models.Model):
+    product = models.ForeignKey(ProductTable, on_delete=models.CASCADE)
+    added_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.product.name} added to cart"

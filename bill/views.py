@@ -1,6 +1,5 @@
 from django.shortcuts import render,redirect
 from django.contrib import messages
-#from .models import ProductTable
 from product.models import ProductTable
 from .models import Order
 # Create your views here.

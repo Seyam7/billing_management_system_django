@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib import messages
+
 # Create your views here.
-from .models import ProductTable
+from .models import ProductTable, Order
 
 def newproduct (request):
     if request.method=='POST':
@@ -56,3 +57,30 @@ def search (request):
         'data':item,
     }
     return render(request,'search.html',context)
+
+
+def cart_view(request):
+    orders = ProductTable.objects.all()  # You can filter by user/session if needed
+    total = 0
+    for item in orders:
+        try:
+            total += int(item.price) * int(item.quantity)
+        except:
+            total += 0  # fallback if quantity or price is empty or not a number
+
+    return render(request, 'checkout.html', {'orders': orders, 'total': total})
+
+def add_to_cart(request, product_id):
+    product = get_object_or_404(ProductTable, id=product_id)
+    Order.objects.create(product=product)
+    return redirect('show_cart') 
+
+def show_cart(request):
+    cart_items = Order.objects.all().order_by('-added_at')
+    total = 0
+    for item in cart_items:
+        try:
+            total += int(item.price) * int(item.quantity)
+        except:
+            total += 0  # fallback if quantity or price is empty or not a number
+    return render(request, 'billpay.html', {'cart_items': cart_items, 'total': total})
